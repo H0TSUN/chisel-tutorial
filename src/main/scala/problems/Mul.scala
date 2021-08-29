@@ -15,10 +15,11 @@ class Mul extends Module {
     val z   = Output(UInt(8.W))
   })
   val mulsValues = new ArrayBuffer[UInt]()
-
+  
   // Calculate io.z = io.x * io.y by generating a table of values for mulsValues
+  val initValue =  1.U(4.W) 
+  val shift = UInt(4.W)
 
   // Implement below ----------
-
-  // Implement above ----------
+ // Implement above ----------
 }

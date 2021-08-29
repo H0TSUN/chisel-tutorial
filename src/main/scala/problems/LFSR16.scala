@@ -2,7 +2,7 @@
 package problems
 
 import chisel3._
-
+import chisel3.util.Cat
 // Problem:
 //
 // Implement a 16-bit Fibonacci Linear-feedback shift register
@@ -16,8 +16,13 @@ class LFSR16 extends Module {
   })
 
   // Implement below ----------
+  val res = RegInit(1.U(16.W))
 
-  io.out := 0.U
+  when(io.inc) {
+    val nxt_res = Cat(res(0)^res(2)^res(3)^res(5), res(15,1))
+    res := nxt_res
+  }
 
+  io.out:= res
   // Implement above ----------
 }
